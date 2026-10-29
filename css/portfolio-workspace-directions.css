@@ -241,7 +241,7 @@
   /* Телефон: папки одним рядом сразу под шапкой, на небе, в левой части.
      Справа корова с ноутбуком, папки её не закрывают и тап по корове попадает в корову */
   /* ряд занимает две трети ширины: дальше начинается корова */
-  .desktop-folders { --cell: min(64px, calc((66vw - 18px) / 4)); grid-template-columns: repeat(4, var(--cell)); gap: 2px; margin: 22px 0 0 12px; padding-top: 0; }
+  .desktop-folders { --cell: min(64px, calc((66vw - 18px) / 4)); grid-template-columns: repeat(4, var(--cell)); gap: 2px; margin: clamp(24px, 6svh, 56px) 0 0 12px; padding-top: 0; }
   .desktop-folder { min-height: 0; justify-content: flex-start; gap: 6px; }
   .desktop-folder__icon { width: min(56px, calc(var(--cell) - 6px)); height: auto; aspect-ratio: 56 / 36; border-radius: 6px 6px 8px 8px; }
   .desktop-folder__icon::before { top: -6px; width: 24px; height: 10px; border-radius: 5px 5px 0 0; }
