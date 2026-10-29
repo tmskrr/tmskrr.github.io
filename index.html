@@ -1,16 +1,123 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Маргарита Терешенкова — продуктовый редактор</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Маргарита Терешенкова</title>
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png">
   <link rel="icon" type="image/png" sizes="512x512" href="/assets/icons/favicon-512.png">
   <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
-<meta http-equiv="refresh" content="0; url=/prototype/shell-lab/finder/">
-<script>location.replace('/prototype/shell-lab/finder/' + location.search + location.hash)</script>
+  <link rel="stylesheet" href="/css/portfolio-prototype.css?v=desktop-25">
+  <link rel="stylesheet" href="/css/portfolio-workspace-directions.css?v=desktop-25">
+  <link rel="stylesheet" href="/prototype/shell-lab/cow-scene.css?v=10">
+  <link rel="stylesheet" href="/prototype/shell-lab/finder-window.css?v=10">
+  <link rel="stylesheet" href="/prototype/projects-lab/projects-lab.css?v=13">
+  <link rel="stylesheet" href="/prototype/projects-lab/widget-case/widget-case.css?v=24">
+  <link rel="stylesheet" href="/prototype/projects-lab/design-case/design-case.css?v=14">
+  <script src="/js/portfolio-prototype.js?v=scene-3" defer></script>
+  <script src="/prototype/shell-lab/cow-scene.js?v=11" defer></script>
+  <link rel="stylesheet" href="/prototype/about-lab/about-lab.css?v=11">
+  <script src="/prototype/about-lab/about-lab.js?v=10" defer></script>
+  <link rel="stylesheet" href="/prototype/books-direction/shelf.css?v=11">
+  <script src="/prototype/books-direction/shelf.js?v=25" defer></script>
+  <link rel="stylesheet" href="/prototype/about-scenes/scenes.css?v=3">
+  <script src="/prototype/about-scenes/scenes.js?v=4" defer></script>
+  <link rel="stylesheet" href="/prototype/about-typewriter/tw.css?v=17">
+  <script src="/prototype/about-typewriter/tw.js?v=11" defer></script>
+  <script src="/prototype/shell-lab/finder-app.js?v=46" defer></script>
 </head>
-<body>
-<p><a href="/prototype/shell-lab/finder/">Открыть портфолио</a></p>
+<body class="workspace-page has-window" data-desktop-url="/" data-desktop-title="Рабочее пространство — Маргарита Терешенкова" data-app-url="/">
+  <a class="skip-link" href="#main">К содержанию</a>
+  <header class="site-header workspace-header">
+    <nav class="site-nav container" aria-label="Системная панель">
+      <a class="site-brand" href="/">Маргарита Терешенкова</a>
+    </nav>
+  </header>
+
+  <!-- Рабочий стол: та же сцена, что в workspace-a. Окно живёт поверх него. -->
+  <div class="workspace-home workspace-home--immersive" id="desktop">
+    <img class="workspace-home__background" src="/assets/images/portfolio/cow-workspace.png" alt="Корова в розовых очках работает за ноутбуком в поле" draggable="false">
+    <button class="cow-work-trigger" type="button" aria-label="Корова: познакомиться с Марго" aria-expanded="false">
+      <span class="cow-work-glow" aria-hidden="true"></span>
+      <span class="cow-work-typing" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="cow-system-labels" aria-hidden="true">
+        <span class="cow-system-label cow-system-label--fintech">/ fintech</span>
+        <span class="cow-system-label cow-system-label--saas">/ saas</span>
+        <span class="cow-system-label cow-system-label--b2b">/ b2b</span>
+        <span class="cow-system-label cow-system-label--ux">/ ux writing</span>
+        <span class="cow-system-label cow-system-label--content">/ content systems</span>
+        <span class="cow-system-label cow-system-label--frontend">/ frontend</span>
+      </span>
+    </button>
+    <div class="workspace-home__veil" aria-hidden="true"></div>
+
+    <section class="workspace-intro" aria-labelledby="workspace-a-title">
+      <p class="workspace-kicker">Продуктовая редактура · UX · контент-системы</p>
+      <h1 id="workspace-a-title">Маргарита Терешенкова</h1>
+      <p>Выстраиваю язык между продуктом и&nbsp;пользователем</p>
+      <dl class="workspace-profile" aria-label="Профессиональный профиль">
+        <div><dt>3+ года</dt><dd>в цифровых продуктах</dd></div>
+        <div><dt>Frontend</dt><dd>основы реализации</dd></div>
+        <div><dt>AI</dt><dd>автоматизация и оптимизация</dd></div>
+        <div><dt>Бэкграунд</dt><dd>Редактор внутриком</dd></div>
+      </dl>
+    </section>
+
+    <nav class="desktop-folders" aria-label="Разделы портфолио">
+      <a class="desktop-folder" href="/projects/" data-open-window="projects"><span class="desktop-folder__icon" aria-hidden="true"></span><strong>Проекты</strong></a>
+      <a class="desktop-folder" href="/about/" data-open-window="about"><span class="desktop-folder__icon" aria-hidden="true"></span><strong>Обо мне</strong></a>
+      <a class="desktop-folder" href="/books/" data-open-window="books"><span class="desktop-folder__icon" aria-hidden="true"></span><strong>Книжная полка</strong></a>
+      <a class="desktop-folder" href="/design/" data-open-window="design"><span class="desktop-folder__icon" aria-hidden="true"></span><strong>Дизайн-проекты</strong></a>
+    </nav>
+
+  </div>
+
+
+  <!-- Одно постоянное окно. Содержимое разделов подгружается из их страниц, оболочка не меняется. -->
+  <section class="win is-closed" id="window" tabindex="-1" aria-labelledby="win-title">
+    <aside class="win__sidebar">
+      <div class="win__lights">
+        <a class="light light--close" href="/" data-win="close" aria-label="Закрыть окно и вернуться на рабочий стол"></a>
+        <button class="light light--minimize" type="button" data-win="minimize" aria-label="Свернуть окно в Dock"></button>
+        <button class="light light--zoom" type="button" data-win="zoom" aria-label="Развернуть окно" aria-pressed="false"></button>
+      </div>
+      <nav class="win-nav" data-win-nav aria-label="Разделы">
+        <span class="win-nav__indicator" data-indicator aria-hidden="true"></span>
+        <a class="win-nav__desktop" href="/" data-win="close">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2.5" y="3.5" width="15" height="10" rx="2"/><path d="M7 17h6M10 13.5V17"/></svg>
+          <span>Рабочий стол</span>
+        </a>
+        <p class="win-nav__label">Избранное</p>
+          <a href="/projects/" data-section="projects"><span class="icon-folder" aria-hidden="true"></span><span>Проекты</span></a>
+          <a href="/about/" data-section="about"><span class="icon-folder" aria-hidden="true"></span><span>Обо мне</span></a>
+          <a href="/books/" data-section="books"><span class="icon-folder" aria-hidden="true"></span><span>Книжная полка</span></a>
+          <a href="/design/" data-section="design"><span class="icon-folder" aria-hidden="true"></span><span>Дизайн-проекты</span></a>
+      </nav>
+    </aside>
+
+    <header class="win__toolbar">
+      <div class="win__history">
+        <button class="tool-button" type="button" data-win="back" aria-label="Назад" disabled><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.5 4.5 7 10l5.5 5.5"/></svg></button>
+        <button class="tool-button" type="button" data-win="forward" aria-label="Вперёд" disabled><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.5 4.5 13 10l-5.5 5.5"/></svg></button>
+      </div>
+      <h2 class="win__title" id="win-title" aria-live="polite">Проекты</h2>
+      <button class="win__title-button" type="button" data-win-menu-button aria-expanded="false" aria-controls="win-menu">
+        <span data-win-title-mobile>Проекты</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 8l4 4 4-4"/></svg>
+      </button>
+      <nav class="win-menu" id="win-menu" data-win-menu aria-label="Разделы">
+        <a href="/" data-win="close">Рабочий стол</a>
+          <a href="/projects/" data-section="projects">Проекты</a>
+          <a href="/about/" data-section="about">Обо мне</a>
+          <a href="/books/" data-section="books">Книжная полка</a>
+          <a href="/design/" data-section="design">Дизайн-проекты</a>
+      </nav>
+    </header>
+
+    <main class="win__content" id="main" data-win-scroll>
+      <div class="win__page" data-win-page></div>
+    </main>
+
+    <footer class="win__status" data-win-status></footer>
+  </section>
 </body>
 </html>

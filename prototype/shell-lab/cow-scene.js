@@ -71,7 +71,7 @@
   say.id = 'cow-say';
   say.innerHTML = `
     <p class="cow-say__text" aria-live="polite"><span data-say-text></span><i class="cow-say__caret" aria-hidden="true"></i></p>
-    <a class="cow-say__link" href="/prototype/shell-lab/finder/?open=about" data-open-window="about">Познакомиться ближе <span aria-hidden="true">→</span></a>`;
+    <a class="cow-say__link" href="/about/" data-open-window="about">Познакомиться ближе <span aria-hidden="true">→</span></a>`;
   home.append(say);
 
   // Короткие реакции над головой («Му», сердечко, «Я вообще-то работаю»)

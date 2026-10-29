@@ -1,5 +1,5 @@
 /* Прототип: три способа показать проекты в папке «Проекты».
-   Подключается в окне /prototype/shell-lab/finder/ и действует только внутри .pl */
+   Подключается в окне / и действует только внутри .pl */
 
 .pl { --pl-ink: #1f2427; --pl-muted: #6a7073; --pl-line: rgba(31, 36, 39, .12); --ease: cubic-bezier(.2, .7, .2, 1); }
 .pl-accent--blue { --accent: #35a9dd; --accent-ink: #1479ad; --accent-soft: #e8f5fb; }

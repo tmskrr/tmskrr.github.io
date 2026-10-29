@@ -14,9 +14,9 @@
     { match: '/books', key: 'books', label: 'Книжная полка', href: '/prototype/books-direction/?v=desktop-27' },
     { match: '/design/', key: 'design', label: 'Дизайн-проекты', href: '/prototype/design/?v=desktop-27' }
   ];
-  const currentSection = sectionByPath.find((section) => location.pathname.includes(section.match));
+  const currentSection = document.body.dataset.appUrl === '/' ? null : sectionByPath.find((section) => location.pathname.includes(section.match));
 
-  if (location.pathname.startsWith('/prototype/')) {
+  if (location.pathname.startsWith('/prototype/') || document.body.dataset.appUrl === '/') {
     document.body.classList.add('has-workspace-dock');
     const dock = document.createElement('nav');
     dock.className = 'workspace-dock';

@@ -29,8 +29,7 @@
     'design/widget': { src: '/prototype/projects-lab/design-widget/', pick: 'main', title: 'Widget', section: 'design' },
     'design/flowup': { src: '/prototype/projects-lab/design-flowup/', pick: 'main', title: 'FlowUp', section: 'design' },
     'design/technonicol': { src: '/prototype/projects-lab/design-technonicol/', pick: 'main', title: 'Технониколь', section: 'design' },
-    'design/converteron': { src: '/prototype/projects-lab/design-converteron/', pick: 'main', title: '2+2', section: 'design' },
-    contact: { src: '/prototype/contact/', pick: 'main', title: 'Контакты', section: null }
+    'design/converteron': { src: '/prototype/projects-lab/design-converteron/', pick: 'main', title: '2+2', section: 'design' }
   };
   // Папки (разделы) открываются с одинаковой шапкой, как строка папки в Finder: название слева, пояснение справа.
   // Прототип: прежние варианты подачи «Проектов» по-прежнему доступны через ?variant=v1|v2|v3
@@ -54,6 +53,9 @@
     '/prototype/books-direction/': 'books', '/prototype/books/': 'books',
     '/prototype/design/': 'design', '/prototype/design/widget.html': 'design/widget', '/prototype/design/flowup.html': 'design/flowup', '/prototype/design/technonicol.html': 'design/technonicol', '/prototype/design/converteron.html': 'design/converteron', '/prototype/contact/': 'contact'
   };
+  // Публикация: раздел живёт в адресе как путь (/projects/, /design/flowup/), а не как ?open=
+  const PRETTY = APP_URL === '/';
+  const keyFromPath = (path) => { const k = path.replace(/^\/+|\/+$/g, '').replace(/\/index\.html$/, ''); return k && ROUTES[k] ? k : null; };
   function plural(n, forms) {
     const m10 = n % 10; const m100 = n % 100;
     const form = m10 === 1 && m100 !== 11 ? forms[0] : m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14) ? forms[1] : forms[2];
@@ -78,6 +80,7 @@
     const url = new URL(href, location.href);
     if (url.origin !== location.origin) return null;
     if (url.pathname === new URL(APP_URL, location.href).pathname) return url.searchParams.get('open') || url.searchParams.get('min');
+    if (PRETTY && keyFromPath(url.pathname)) return keyFromPath(url.pathname);
     return PATHS[url.pathname] || null;
   };
 
@@ -171,7 +174,7 @@
   // ---------- Адрес и заголовок вкладки (без перезагрузки) ----------
   const syncUrl = () => {
     const url = new URL(APP_URL, location.href);
-    if (state === 'open') url.searchParams.set('open', current);
+    if (state === 'open') { if (PRETTY) url.pathname = `/${current}/`; else url.searchParams.set('open', current); }
     if (state === 'minimized') url.searchParams.set('min', current);
     if (state !== 'closed' && body.classList.contains('is-zoomed')) url.searchParams.set('zoom', '1');
     if (VARIANT) url.searchParams.set('variant', VARIANT);
@@ -616,7 +619,7 @@
 
   // ---------- Старт: состояние берётся из адреса ----------
   const params = new URLSearchParams(location.search);
-  const startKey = [params.get('open'), params.get('min')].find((key) => key && ROUTES[key]);
+  const startKey = [params.get('open'), params.get('min'), PRETTY ? keyFromPath(location.pathname) : null].find((key) => key && ROUTES[key]);
   if (params.get('zoom') === '1') body.classList.add('is-zoomed'), zoomButton.setAttribute('aria-pressed', 'true');
   syncDock(true);
   if (startKey && params.get('min') === startKey) {
