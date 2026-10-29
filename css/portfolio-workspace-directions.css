@@ -150,7 +150,8 @@
 @media (max-width: 1000px) {
   /* Папки в один ряд и мельче: сеткой 2×2 они наезжали на текст шапки */
   .desktop-folders { grid-template-columns: repeat(4, 112px); gap: 14px; }
-  .desktop-folder { min-height: 110px; gap: 10px; }
+  .desktop-folder { min-height: 110px; justify-content: flex-start; gap: 10px; }
+  .desktop-folder strong { white-space: nowrap; }
   .desktop-folder__icon { width: 100px; height: 64px; border-radius: 9px 9px 11px 11px; }
   .desktop-folder__icon::before { top: -11px; width: 42px; height: 17px; border-radius: 8px 8px 0 0; }
   .desktop-folder:first-child strong, .desktop-folder strong { font-size: 14px; }
@@ -211,9 +212,10 @@
    Раньше папки стояли на фиксированном расстоянии от низа и на коротком экране
    (браузер внутри Telegram, крупный шрифт, невысокое окно ноутбука) наезжали на текст шапки */
 .workspace-home { display: flex; flex-direction: column; }
-.workspace-intro { position: relative; top: auto; left: auto; flex: none; margin: clamp(34px, 5vh, 62px) 0 0 max(32px, calc((100vw - var(--content)) / 2)); }
-.desktop-folders { position: relative; bottom: auto; left: auto; flex: none; align-self: flex-start; margin: auto 0 170px max(32px, calc((100vw - var(--content)) / 2)); padding-top: 18px; }
+.workspace-intro { position: relative; top: auto; right: auto; left: auto; flex: none; margin: clamp(34px, 5vh, 62px) 0 0 max(32px, calc((100vw - var(--content)) / 2)); }
+.desktop-folders { position: relative; right: auto; bottom: auto; left: auto; flex: none; align-self: flex-start; margin: auto 0 170px max(32px, calc((100vw - var(--content)) / 2)); padding-top: 18px; }
 @media (max-width: 1000px) { .desktop-folders { margin-bottom: 150px; } }
+@media (min-width: 701px) and (max-width: 800px) { .desktop-folders { grid-template-columns: repeat(4, auto); gap: 14px; } .desktop-folder:first-child strong, .desktop-folder strong { font-size: 13px; } }
 /* Невысокое окно на компьютере: шапка компактнее, папки ближе к Dock */
 @media (min-width: 701px) and (max-height: 760px) {
   .workspace-home { min-height: 0; }
@@ -225,18 +227,31 @@
   .workspace-profile div:nth-child(n+3) { padding-top: 12px; }
   .desktop-folders { margin-bottom: 104px; }
 }
+/* Совсем невысокое окно на компьютере: четыре пункта о себе в одну строку */
+@media (min-width: 701px) and (max-height: 640px) {
+  .workspace-intro { width: min(820px, calc(100vw - 64px)); }
+  .workspace-intro h1 { font-size: 40px; }
+  .workspace-profile { width: 100%; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: 24px; }
+  .workspace-profile div:nth-child(n+3) { padding-top: 0; }
+  .workspace-profile dd { font-size: 14px; }
+  .desktop-folders { margin-bottom: 96px; }
+}
 @media (max-width: 700px) {
   .workspace-intro { margin: 18px 18px 0; }
-  .desktop-folders { align-self: stretch; margin: auto 16px 84px; padding-top: 14px; }
-}
-/* Совсем короткий экран: папки в один ряд, чтобы поместились и шапка, и папки */
-@media (max-width: 700px) and (max-height: 680px) {
-  .desktop-folders { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
-  .desktop-folder { min-height: 0; gap: 6px; }
-  .desktop-folder__icon { width: 64px; height: 42px; border-radius: 7px 7px 8px 8px; }
-  .desktop-folder__icon::before { top: -7px; width: 28px; height: 11px; border-radius: 6px 6px 0 0; }
+  /* Телефон: папки одним рядом в левой части. Правая часть — корова с ноутбуком, над холмом
+     вылезает вторая корова, поэтому папки их не закрывают и тап по корове попадает в корову */
+  .desktop-folders { grid-template-columns: repeat(4, 64px); gap: 4px; margin: auto 0 84px 12px; padding-top: 14px; }
+  .desktop-folder { min-height: 0; justify-content: flex-start; gap: 6px; }
+  .desktop-folder__icon { width: 56px; height: 36px; border-radius: 6px 6px 8px 8px; }
+  .desktop-folder__icon::before { top: -6px; width: 24px; height: 10px; border-radius: 5px 5px 0 0; }
   .desktop-folder__icon::after { top: 3px; right: 4px; left: 4px; height: 4px; }
-  .desktop-folder:first-child strong, .desktop-folder strong { font-size: 12px; line-height: 1.15; }
+  .desktop-folder:first-child strong, .desktop-folder strong { font-size: 12px; line-height: 1.15; white-space: normal; }
+}
+/* Узкий телефон: папки плотнее, чтобы не заходить на ноутбук */
+@media (max-width: 370px) {
+  .desktop-folders { grid-template-columns: repeat(4, 56px); gap: 2px; }
+  .desktop-folder__icon { width: 50px; height: 32px; }
+  .desktop-folder:first-child strong, .desktop-folder strong { font-size: 11px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
