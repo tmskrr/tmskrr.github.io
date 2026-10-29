@@ -261,7 +261,7 @@
 
 /* Телефон боком: экран ниже 500px, всё не помещается. Рабочий стол становится обычной
    высоты и прокручивается, Dock остаётся внизу экрана */
-@media (orientation: landscape) and (max-height: 500px) {
+@media (max-height: 500px), (pointer: coarse) and (max-height: 640px) and (min-aspect-ratio: 4/3) {
   .workspace-page { height: auto; min-height: 100svh; overflow: visible; }
   .workspace-home { height: auto; min-height: 640px; }
 }
