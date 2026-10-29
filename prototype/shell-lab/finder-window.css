@@ -226,3 +226,9 @@
   .workspace-dock.is-window-closed .workspace-dock__separator,
   .workspace-dock.is-window-closed .workspace-dock__current { margin-left: -5px; }
 }
+
+/* Телефон боком: окно почти на весь экран и поверх Dock, иначе от окна оставалась полоска.
+   Закрыть и перейти в другой раздел можно через меню под названием окна */
+@media (orientation: landscape) and (max-height: 500px) {
+  .win, .is-zoomed .win { z-index: 70; --win-top: calc(var(--system-header-height, 51px) + 6px); --win-left: 12px; --win-w: calc(100vw - 24px); --win-h: calc(100svh - var(--system-header-height, 51px) - 12px); border-radius: 12px; }
+}
