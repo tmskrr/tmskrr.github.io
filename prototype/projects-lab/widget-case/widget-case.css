@@ -515,7 +515,7 @@
 .wf .wf-track .wf-flow { margin-top: 10px; }
 }
 /* Узкий экран: меню разделов в одну строку с прокруткой, иначе последний пункт падал на вторую строку */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
 .wf .wf-nav { gap: 10px; font-size: 13px; }
 .wf .wf-nav a { padding: 3px 7px; }
 .wf .wf-nav__links { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }

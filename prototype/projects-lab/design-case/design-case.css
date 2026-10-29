@@ -921,3 +921,6 @@
   .dz .dz-calc--v2 .dz-calc__sel .dz-ic { width: 16px; height: 16px; }
   .dz .dz-calc--v2 .dz-calc__btns span { font-size: 12px; }
 }
+
+/* Длинные слова в узкой колонке таблицы сравнения переносятся, а не вылезают за колонку */
+.dz .dz-ctab li { hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word; }
