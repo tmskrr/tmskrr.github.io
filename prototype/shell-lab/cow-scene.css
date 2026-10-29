@@ -212,6 +212,8 @@
 }
 .cow-scene.is-twin .cow-scene__front { opacity: 1; }
 .cow-scene.is-twin .cow-scene__twin { animation: cow-twin 3.2s cubic-bezier(.3, .7, .3, 1) both; }
+/* Пока вылезает вторая корова, сцена поднимается над папками: иначе на телефоне её закрывают папки */
+.cow-scene.is-twin { z-index: 6; }
 @keyframes cow-twin {
   0% { opacity: 0; transform: translateY(0) scaleX(-1); }
   6% { opacity: 1; }

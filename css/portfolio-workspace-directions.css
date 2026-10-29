@@ -238,20 +238,29 @@
 }
 @media (max-width: 700px) {
   .workspace-intro { margin: 18px 18px 0; }
-  /* Телефон: папки одним рядом в левой части. Правая часть — корова с ноутбуком, над холмом
-     вылезает вторая корова, поэтому папки их не закрывают и тап по корове попадает в корову */
-  .desktop-folders { grid-template-columns: repeat(4, 64px); gap: 4px; margin: auto 0 84px 12px; padding-top: 14px; }
+  /* Телефон: папки одним рядом сразу под шапкой, на небе, в левой части.
+     Справа корова с ноутбуком, папки её не закрывают и тап по корове попадает в корову */
+  /* ряд занимает две трети ширины: дальше начинается корова */
+  .desktop-folders { --cell: min(64px, calc((66vw - 18px) / 4)); grid-template-columns: repeat(4, var(--cell)); gap: 2px; margin: 22px 0 0 12px; padding-top: 0; }
   .desktop-folder { min-height: 0; justify-content: flex-start; gap: 6px; }
-  .desktop-folder__icon { width: 56px; height: 36px; border-radius: 6px 6px 8px 8px; }
+  .desktop-folder__icon { width: min(56px, calc(var(--cell) - 6px)); height: auto; aspect-ratio: 56 / 36; border-radius: 6px 6px 8px 8px; }
   .desktop-folder__icon::before { top: -6px; width: 24px; height: 10px; border-radius: 5px 5px 0 0; }
   .desktop-folder__icon::after { top: 3px; right: 4px; left: 4px; height: 4px; }
   .desktop-folder:first-child strong, .desktop-folder strong { font-size: 12px; line-height: 1.15; white-space: normal; }
+  /* папки на небе: подписи тёмные, как текст шапки, белые там не читались */
+  .desktop-folder { color: #202527; text-shadow: 0 1px 8px rgba(255, 255, 255, .75); }
 }
-/* Узкий телефон: папки плотнее, чтобы не заходить на ноутбук */
-@media (max-width: 370px) {
-  .desktop-folders { grid-template-columns: repeat(4, 56px); gap: 2px; }
-  .desktop-folder__icon { width: 50px; height: 32px; }
+@media (max-width: 350px) {
+  .desktop-folders { --cell: calc((66vw - 24px) / 4); gap: 4px; }
   .desktop-folder:first-child strong, .desktop-folder strong { font-size: 11px; }
+}
+
+
+/* Телефон боком: экран ниже 500px, всё не помещается. Рабочий стол становится обычной
+   высоты и прокручивается, Dock остаётся внизу экрана */
+@media (orientation: landscape) and (max-height: 500px) {
+  .workspace-page { height: auto; min-height: 100svh; overflow: visible; }
+  .workspace-home { height: auto; min-height: 640px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
