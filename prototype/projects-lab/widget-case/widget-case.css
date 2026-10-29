@@ -514,6 +514,13 @@
 .wf .wf-track > p, .wf .wf-track .wf-flow { grid-column: 1; grid-row: auto; }
 .wf .wf-track .wf-flow { margin-top: 10px; }
 }
+/* Узкий экран: меню разделов в одну строку с прокруткой, иначе последний пункт падал на вторую строку */
+@media (max-width: 1024px) {
+.wf .wf-nav { gap: 10px; font-size: 13px; }
+.wf .wf-nav a { padding: 3px 7px; }
+.wf .wf-nav__links { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.wf .wf-nav__links::-webkit-scrollbar { display: none; }
+}
 @media (max-width: 760px) {
 .wf .wf-lead { font-size: 17px; }
 .wf .wf-facts { grid-template-columns: 1fr 1fr; }

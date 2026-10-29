@@ -178,7 +178,8 @@
 .workspace-dock.is-instant, .workspace-dock.is-instant * { transition: none !important; }
 @keyframes dock-arrive { 40% { transform: translateY(-5px) scale(1.06); } }
 
-@media (max-width: 760px) {
+/* Окно без сайдбара: на телефоне и на узком экране до 1024px. Сайдбар в узком окне отъедал треть ширины, и разделы верстались в колонку шириной 450px */
+@media (max-width: 1024px) {
   .win { --win-top: calc(var(--system-header-height, 51px)); --win-left: 0px; --win-w: 100vw; --win-h: calc(100svh - var(--system-header-height, 51px) - 82px); grid-template-columns: 1fr; grid-template-rows: 52px minmax(0, 1fr); grid-template-areas: "tool" "main"; border-radius: 0 0 18px 18px; }
   .is-zoomed .win { --win-top: calc(var(--system-header-height, 51px)); --win-left: 0px; --win-w: 100vw; --win-h: calc(100svh - var(--system-header-height, 51px) - 82px); }
   .win__sidebar, .win__status, .win__title { display: none; }
@@ -198,6 +199,14 @@
   .win-menu a[aria-current="page"] { color: var(--accent); font-weight: 600; }
   .win-menu a[aria-current="page"]::after { width: 7px; height: 12px; margin-right: 3px; border: solid currentColor; border-width: 0 2px 2px 0; transform: rotate(45deg) translateY(-2px); content: ""; }
   .win-menu a:first-child { margin-bottom: 4px; padding-bottom: 4px; border-bottom: 1px solid var(--hairline); border-radius: 9px 9px 0 0; }
+  .win__page { padding: 24px 32px 36px; }
+  .win__page .section--soft { margin: 0 -32px; padding-inline: 32px; }
+}
+/* Узкий экран, не телефон: окно с полями и скруглением, высота с учётом Dock */
+@media (min-width: 761px) and (max-width: 1024px) {
+  .win, .is-zoomed .win { --win-top: calc(var(--system-header-height, 51px) + 12px); --win-left: 16px; --win-w: calc(100vw - 32px); --win-h: calc(100svh - var(--system-header-height, 51px) - 12px - var(--dock-space)); border-radius: 12px; }
+}
+@media (max-width: 760px) {
   .win__page { padding: 20px 18px 28px; }
   .win__page .about-workbench { min-height: 0; padding-bottom: 20px; }
   .win__page .profile-typewriter { width: 100%; }

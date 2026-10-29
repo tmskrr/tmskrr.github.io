@@ -12,7 +12,7 @@
   const APP_URL = body.dataset.appUrl;
   const DESKTOP_TITLE = body.dataset.desktopTitle || document.title;
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const compact = window.matchMedia('(max-width: 760px)');
+  const compact = window.matchMedia('(max-width: 1024px)');
   const EASE_OUT = 'cubic-bezier(.2, .7, .2, 1)';
   const wait = (ms) => new Promise((resolve) => window.setTimeout(resolve, reduce.matches ? 0 : ms));
 

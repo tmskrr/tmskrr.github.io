@@ -148,7 +148,13 @@
 @keyframes cow-key-right { 0%, 45%, 100% { transform: translateY(3px) rotate(-1deg); } 68% { transform: translateY(0) rotate(4deg); } }
 
 @media (max-width: 1000px) {
-  .desktop-folders { grid-template-columns: repeat(2, 142px); }
+  /* Папки в один ряд и мельче: сеткой 2×2 они наезжали на текст шапки */
+  .desktop-folders { grid-template-columns: repeat(4, 112px); gap: 14px; }
+  .desktop-folder { min-height: 110px; gap: 10px; }
+  .desktop-folder__icon { width: 100px; height: 64px; border-radius: 9px 9px 11px 11px; }
+  .desktop-folder__icon::before { top: -11px; width: 42px; height: 17px; border-radius: 8px 8px 0 0; }
+  .desktop-folder:first-child strong, .desktop-folder strong { font-size: 14px; }
+  .workspace-home__background { object-position: 64% center; }
   .profile-typewriter { right: 1%; }
   .about-notes { width: min(360px, 38vw); }
   .library-room { grid-template-columns: 1fr; }
@@ -199,6 +205,38 @@
   .library-room { width: 100%; gap: 20px; padding-bottom: 48px; }
   .library-group { padding: 22px 0 18px 16px; }
   .physical-shelf__books { min-width: max-content; justify-content: flex-start; padding-right: 16px; }
+}
+
+/* Шапка и папки идут потоком: папки прижаты к низу, но не выше конца шапки.
+   Раньше папки стояли на фиксированном расстоянии от низа и на коротком экране
+   (браузер внутри Telegram, крупный шрифт, невысокое окно ноутбука) наезжали на текст шапки */
+.workspace-home { display: flex; flex-direction: column; }
+.workspace-intro { position: relative; top: auto; left: auto; flex: none; margin: clamp(34px, 5vh, 62px) 0 0 max(32px, calc((100vw - var(--content)) / 2)); }
+.desktop-folders { position: relative; bottom: auto; left: auto; flex: none; align-self: flex-start; margin: auto 0 170px max(32px, calc((100vw - var(--content)) / 2)); padding-top: 18px; }
+@media (max-width: 1000px) { .desktop-folders { margin-bottom: 150px; } }
+/* Невысокое окно на компьютере: шапка компактнее, папки ближе к Dock */
+@media (min-width: 701px) and (max-height: 760px) {
+  .workspace-home { min-height: 0; }
+  .workspace-intro { margin-top: 24px; }
+  .workspace-intro h1 { font-size: clamp(38px, 3.6vw, 52px); }
+  .workspace-intro > p:not(.workspace-kicker) { margin-top: 12px; }
+  .workspace-profile { margin-top: 16px; }
+  .workspace-profile div { padding-bottom: 12px; }
+  .workspace-profile div:nth-child(n+3) { padding-top: 12px; }
+  .desktop-folders { margin-bottom: 104px; }
+}
+@media (max-width: 700px) {
+  .workspace-intro { margin: 18px 18px 0; }
+  .desktop-folders { align-self: stretch; margin: auto 16px 84px; padding-top: 14px; }
+}
+/* Совсем короткий экран: папки в один ряд, чтобы поместились и шапка, и папки */
+@media (max-width: 700px) and (max-height: 680px) {
+  .desktop-folders { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+  .desktop-folder { min-height: 0; gap: 6px; }
+  .desktop-folder__icon { width: 64px; height: 42px; border-radius: 7px 7px 8px 8px; }
+  .desktop-folder__icon::before { top: -7px; width: 28px; height: 11px; border-radius: 6px 6px 0 0; }
+  .desktop-folder__icon::after { top: 3px; right: 4px; left: 4px; height: 4px; }
+  .desktop-folder:first-child strong, .desktop-folder strong { font-size: 12px; line-height: 1.15; }
 }
 
 @media (prefers-reduced-motion: reduce) {
