@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Маргарита Терешенкова — резюме</title>
+<!-- Резюме. Отдельная страница, ни один раздел сайта на неё пока не ссылается. PDF собирается из неё же (A4, одна страница). -->
+<style>
+@font-face { font-family: "Plex"; src: url("/assets/fonts/IBMPlexSans-Regular.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "Plex"; src: url("/assets/fonts/IBMPlexSans-Medium.woff2") format("woff2"); font-weight: 500; }
+@font-face { font-family: "Plex"; src: url("/assets/fonts/IBMPlexSans-SemiBold.woff2") format("woff2"); font-weight: 600; }
+:root { --ink: #1f2427; --muted: #5d6467; --soft: #8a9195; --line: #e3e5e6; --accent: #1463c4; --tag: #f1f3f4; }
+* { box-sizing: border-box; }
+html { background: #eceeef; }
+body { margin: 0; font-family: "Plex", Arial, sans-serif; color: var(--ink); font-size: 9.3pt; line-height: 1.38; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+p, h1, h2, h3, ul { margin: 0; padding: 0; }
+ul { list-style: none; }
+a { color: var(--accent); text-decoration: underline; text-decoration-color: rgba(20, 99, 196, .35); text-underline-offset: 2px; }
+
+.cv { width: 210mm; min-height: 297mm; margin: 24px auto; background: #fff; box-shadow: 0 4px 24px rgba(0, 0, 0, .08); }
+@media print { html { background: #fff; } .cv { margin: 0; box-shadow: none; } @page { size: A4; margin: 0; } }
+
+/* шапка */
+.cv__top { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; padding: 9mm 13mm 5mm; border-bottom: 1px solid var(--line); }
+.cv__role { color: var(--accent); font-size: 9.6pt; font-weight: 500; }
+.cv__name { margin-top: 3px; font-size: 22pt; font-weight: 600; line-height: 1.1; letter-spacing: -.02em; }
+.cv__contacts { text-align: right; font-size: 9.8pt; line-height: 1.6; }
+.cv__contacts p:last-child { color: var(--muted); }
+
+.cv__about { padding: 4mm 13mm; border-bottom: 1px solid var(--line); font-size: 10pt; }
+.cv__about p + p { margin-top: 3px; color: var(--muted); font-size: 9.4pt; }
+
+/* две колонки */
+.cv__body { display: grid; grid-template-columns: 1fr 56mm; }
+.cv__main { border-right: 1px solid var(--line); }
+.cv__side > section { padding: 5mm 7mm 4.5mm; border-bottom: 1px solid var(--line); }
+.cv__side > section:last-child { border-bottom: 0; }
+.cv h2 { color: var(--soft); font-size: 9pt; font-weight: 500; }
+.cv__main > h2 { padding: 4mm 13mm 0; }
+
+/* место работы */
+.job { display: grid; grid-template-columns: 24mm 1fr; gap: 0 5mm; padding: 2.7mm 8mm 2.7mm 13mm; border-bottom: 1px solid var(--line); }
+.job:last-child { border-bottom: 0; }
+.job__when { font-size: 9pt; font-weight: 500; line-height: 1.35; }
+.job__when span { display: block; margin-top: 2px; color: var(--soft); font-weight: 400; font-size: 8.4pt; }
+.job__co { font-size: 10.5pt; font-weight: 600; line-height: 1.25; }
+.job__pos { margin-top: 0; color: var(--accent); font-size: 9.4pt; }
+.job__lead { margin-top: 2px; }
+.job ul { margin-top: 2px; }
+.job li { position: relative; padding-left: 13px; }
+.job li + li { margin-top: 0; }
+.job li::before { content: "*"; position: absolute; left: 0; top: -1px; color: var(--accent); font-weight: 600; }
+
+/* правая колонка */
+.tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 7px; }
+.tags span { padding: 1px 8px; border-radius: 6px; background: var(--tag); font-size: 8.6pt; }
+.rows { margin-top: 6px; display: grid; gap: 4px; }
+.rows li b { display: block; font-weight: 500; font-size: 9.2pt; line-height: 1.3; }
+.rows li span { color: var(--soft); font-size: 8.4pt; }
+.langs { margin-top: 6px; display: grid; gap: 4px; }
+.langs li { display: flex; justify-content: space-between; font-size: 9.2pt; }
+.langs li span { color: var(--soft); }
+</style>
+</head>
+<body>
+<article class="cv">
+  <header class="cv__top">
+    <div>
+      <p class="cv__role">продуктовый редактор · UX writing · B2B, финтех, SaaS</p>
+      <h1 class="cv__name">Маргарита Терешенкова</h1>
+    </div>
+    <div class="cv__contacts">
+      <p><a href="mailto:tmskrarr@gmail.com">Почта</a> · <a href="https://t.me/tmskrr">Telegram</a> · <a href="https://wa.me/79998052272">WhatsApp</a></p>
+      <p>Ташкент · удалённо</p>
+    </div>
+  </header>
+
+  <section class="cv__about">
+    <p>3+ года в&nbsp;цифровых продуктах. Пишу UX-тексты, собираю базы знаний и&nbsp;выстраиваю контент-процессы для&nbsp;B2B, SaaS и&nbsp;финтеха. Запускала базы знаний и&nbsp;контент-направления с&nbsp;нуля, отвечала за&nbsp;процессы и&nbsp;качество выпуска.</p>
+    <p><a href="https://www.notion.so/2c8e00bca6f880a6babcdd91db299236">Портфолио с&nbsp;работами</a></p>
+  </section>
+
+  <div class="cv__body">
+    <div class="cv__main">
+      <h2>опыт работы</h2>
+
+      <section class="job">
+        <p class="job__when">май 2025 — июль 2026<span>1 год 3 мес</span></p>
+        <div>
+          <h3 class="job__co">Новые люди</h3>
+          <p class="job__pos">Продуктовый редактор · проектный формат</p>
+          <p class="job__lead">Информационная архитектура, UX-тексты и&nbsp;пользовательские сценарии для&nbsp;B2B-проектов.</p>
+          <ul>
+            <li>Проработала структуру корпоративного портала Технониколь</li>
+            <li>Проработала архитектуру CRM FlowUp</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="job">
+        <p class="job__when">ноябрь 2024 — апрель 2025<span>6 мес<br>сокращение штата</span></p>
+        <div>
+          <h3 class="job__co">YourGoods / Widget</h3>
+          <p class="job__pos">Ведущий продуктовый редактор</p>
+          <p class="job__lead">За&nbsp;месяц собрала базу знаний Widget: 60&nbsp;материалов в&nbsp;4&nbsp;разделах, навигация, шаблоны и&nbsp;единый язык продукта.</p>
+          <ul>
+            <li>Подготовила онбординг, FAQ и&nbsp;инструкции, сама сделала все иллюстрации</li>
+            <li>Настроила редакционные правила и&nbsp;выпуск, руководила работой автора</li>
+            <li>База снизила нагрузку на&nbsp;поддержку и&nbsp;стала инструментом онбординга новых сотрудников</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="job">
+        <p class="job__when">ноябрь 2024 — апрель 2025<span>6 мес</span></p>
+        <div>
+          <h3 class="job__co">Comand Studio</h3>
+          <p class="job__pos">Руководитель контент-направления · проектный формат</p>
+          <p class="job__lead">Выстроила контент-направление студии: приоритеты, задачи команды, редактуру и&nbsp;выпуск материалов.</p>
+          <ul>
+            <li>Для&nbsp;финтех-проекта Alphacon создала tone of voice, редакционные принципы и&nbsp;UX-тексты. Ни&nbsp;один релиз не&nbsp;выходил без&nbsp;согласования текстов</li>
+            <li>FAQ и&nbsp;пошаговые объяснения снизили нагрузку на&nbsp;поддержку и&nbsp;менеджеров</li>
+            <li>Договорилась о&nbsp;совместных публикациях с&nbsp;Uzum Market, Paynet и&nbsp;Ucell</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="job">
+        <p class="job__when">апрель — ноябрь 2024<span>8 мес<br>направление закрыли</span></p>
+        <div>
+          <h3 class="job__co">Uzum Technologies</h3>
+          <p class="job__pos">Ведущий продуктовый редактор</p>
+          <p class="job__lead">Сформировала редакционную основу Uzum Business: структуру разделов и&nbsp;принципы объяснения финансовых сервисов.</p>
+          <ul>
+            <li>Подготовила UX-контент и&nbsp;материалы для&nbsp;предпринимателей, выстроила выпуск от&nbsp;фактуры до&nbsp;публикации на&nbsp;двух языках, ставила задачи переводчикам</li>
+            <li>В&nbsp;Uzum Market и&nbsp;Uzum Boss отвечала за&nbsp;редактуру и&nbsp;качество выпуска</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="job">
+        <p class="job__when">июль 2021 — октябрь 2023<span>2 года 4 мес</span></p>
+        <div>
+          <h3 class="job__co">iConText</h3>
+          <p class="job__pos">Редактор внутренних коммуникаций, зам.&nbsp;руководителя АХО</p>
+          <p class="job__lead">Запустила внутренние коммуникации с&nbsp;нуля: регулярные рубрики, Telegram, внутренний портал и&nbsp;спецпроекты.</p>
+          <ul>
+            <li>Выросла из&nbsp;офис-менеджера до&nbsp;руководящей роли</li>
+            <li>Организовала работу команды, подрядчиков и&nbsp;внутренние проекты</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <aside class="cv__side">
+      <section>
+        <h2>навыки</h2>
+        <div class="tags">
+          <span>UX-тексты</span><span>онбординг</span><span>ошибки и&nbsp;состояния</span><span>user flow</span>
+          <span>базы знаний</span><span>ИА</span><span>гайдлайны</span><span>tone of voice</span><span>контент-процессы</span>
+          <span>запуск направлений</span><span>контроль качества</span><span>работа с&nbsp;экспертами</span>
+          <span>Figma</span><span>Notion</span><span>HTML/CSS</span><span>JavaScript</span><span>Claude</span><span>Codex</span><span>ChatGPT</span>
+        </div>
+      </section>
+      <section>
+        <h2>образование</h2>
+        <ul class="rows">
+          <li><b>МГОТУ</b><span>бакалавр, 2019</span></li>
+          <li><b>WebLab</b><span>продуктовый дизайн, 2026</span></li>
+          <li><b>Яндекс Практикум, HTML&#8209;академия</b><span>фронтенд, 2026</span></li>
+          <li><b>Яндекс Практикум</b><span>интерфейсы, 2025</span></li>
+          <li><b>Максим Ильяхов</b><span>тексты, 2024</span></li>
+          <li><b>Дополнительно</b><span>SMM</span></li>
+        </ul>
+      </section>
+      <section>
+        <h2>языки</h2>
+        <ul class="langs">
+          <li>русский<span>родной</span></li>
+          <li>английский<span>B1</span></li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+</article>
+</body>
+</html>
