@@ -11,8 +11,8 @@
   const sectionByPath = [
     { match: '/projects/', key: 'projects', label: 'Проекты', href: '/prototype/projects/?v=desktop-27' },
     { match: '/about', key: 'about', label: 'Обо мне', href: '/prototype/about-direction/?v=desktop-27' },
-    { match: '/books', key: 'books', label: 'Книжная полка', href: '/prototype/books-direction/?v=desktop-27' },
-    { match: '/design/', key: 'design', label: 'Дизайн-проекты', href: '/prototype/design/?v=desktop-27' }
+    { match: '/books', key: 'books', label: 'Книги', href: '/prototype/books-direction/?v=desktop-27' },
+    { match: '/design/', key: 'design', label: 'Дизайн', href: '/prototype/design/?v=desktop-27' }
   ];
   const currentSection = document.body.dataset.appUrl === '/' ? null : sectionByPath.find((section) => location.pathname.includes(section.match));
 

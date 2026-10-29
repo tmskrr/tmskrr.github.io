@@ -17,15 +17,15 @@
   const wait = (ms) => new Promise((resolve) => window.setTimeout(resolve, reduce.matches ? 0 : ms));
 
   // ---------- Разделы ----------
-  const SECTIONS = { projects: 'Проекты', about: 'Обо мне', books: 'Книжная полка', design: 'Дизайн-проекты' };
+  const SECTIONS = { projects: 'Проекты', about: 'Обо мне', books: 'Книги', design: 'Дизайн' };
   const ROUTES = {
     projects: { src: '/prototype/projects-lab/v3/', pick: '.open-folder__content', title: 'Проекты', section: 'projects', note: 'Цифровые продукты: от\u00a0пользовательской помощи до\u00a0контент-систем и\u00a0запуска новых направлений', status: (root) => plural(root.querySelectorAll('.project-file').length, ['документ', 'документа', 'документов']) },
     'projects/widget': { src: '/prototype/projects-lab/widget-final/', pick: 'main', title: 'Widget', section: 'projects' },
     'projects/alphacon': { src: '/prototype/projects-lab/alphacon-a/', pick: 'main', title: 'Alphacon', section: 'projects' },
     'projects/uzum-business': { src: '/prototype/projects-lab/uzum-d/', pick: 'main', title: 'Uzum Business', section: 'projects' },
     about: { src: '/prototype/about-typewriter/', pick: 'main', title: 'Обо мне', section: 'about', note: 'Всё, что не\u00a0поместилось в\u00a0проекты и\u00a0резюме', status: () => 'Сайт собирала вместе с\u00a0Claude' },   // машинка (about-typewriter). Прежние версии: ?about=scenes (листы), ?about=c (машинка и карточки)
-    books: { src: '/prototype/books-direction/', pick: 'main', title: 'Книжная полка', section: 'books', note: 'Если не\u00a0знаете, что почитать\u00a0— заглядывайте на\u00a0мою полку', status: (root) => plural(Number(root.querySelector('[data-lib]')?.dataset.total || 0), ['книга', 'книги', 'книг']) },
-    design: { src: '/prototype/projects-lab/design-folder/', pick: '.open-folder__content', title: 'Дизайн-проекты', section: 'design', note: 'Структура продукта, сценарии и\u00a0интерфейсы', status: (root) => plural(root.querySelectorAll('.project-file').length, ['проект', 'проекта', 'проектов']) },
+    books: { src: '/prototype/books-direction/', pick: 'main', title: 'Книги', section: 'books', note: 'Если не\u00a0знаете, что почитать\u00a0— заглядывайте на\u00a0мою полку', status: (root) => plural(Number(root.querySelector('[data-lib]')?.dataset.total || 0), ['книга', 'книги', 'книг']) },
+    design: { src: '/prototype/projects-lab/design-folder/', pick: '.open-folder__content', title: 'Дизайн', section: 'design', note: 'Структура продукта, сценарии и\u00a0интерфейсы', status: (root) => plural(root.querySelectorAll('.project-file').length, ['проект', 'проекта', 'проектов']) },
     'design/widget': { src: '/prototype/projects-lab/design-widget/', pick: 'main', title: 'Widget', section: 'design' },
     'design/flowup': { src: '/prototype/projects-lab/design-flowup/', pick: 'main', title: 'FlowUp', section: 'design' },
     'design/technonicol': { src: '/prototype/projects-lab/design-technonicol/', pick: 'main', title: 'Технониколь', section: 'design' },
@@ -95,10 +95,10 @@
           const doc = new DOMParser().parseFromString(html, 'text/html');
           const picked = doc.querySelector(route.pick);
           if (!picked) throw new Error('no content');
-          const fragment = document.createElement('div');
+          const fragment = document.createElement('template');
           fragment.innerHTML = picked.innerHTML;
-          fragment.querySelectorAll('[id="main"]').forEach((el) => el.removeAttribute('id'));
-          fragment.querySelectorAll('[data-reveal]').forEach((el) => el.classList.add('is-visible'));
+          fragment.content.querySelectorAll('[id="main"]').forEach((el) => el.removeAttribute('id'));
+          fragment.content.querySelectorAll('[data-reveal]').forEach((el) => el.classList.add('is-visible'));
           return fragment.innerHTML;
         })
         .catch(() => `<p class="win__error">Не удалось загрузить раздел. <a href="${route.src}">Открыть отдельной страницей</a></p>`));
@@ -614,7 +614,11 @@
   document.addEventListener('keydown', (event) => {
     if (event.key !== 'Escape') return;
     if (body.classList.contains('is-menu-open')) { setMenu(false); menuButton.focus(); return; }
-    if (state === 'open' && body.classList.contains('is-zoomed') && !page.querySelector('dialog[open]')) setZoomed(false);
+    if (state !== 'open' || event.defaultPrevented) return;
+    // открытая книга, лист «Обо мне» или диалог закрываются своими обработчиками, окно остаётся
+    if (page.querySelector('dialog[open], [data-card].is-open, [data-book].is-open')) return;
+    if (body.classList.contains('is-zoomed')) { setZoomed(false); return; }
+    close();
   });
 
   // ---------- Старт: состояние берётся из адреса ----------
