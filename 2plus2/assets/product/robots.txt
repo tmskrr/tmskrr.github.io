@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://converteron.converteron.workers.dev/sitemap.xml
