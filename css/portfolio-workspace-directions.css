@@ -277,3 +277,6 @@
   .profile-typewriter.is-typing .profile-paper__typed { animation: none; }
   .profile-paper__cursor { display: none; }
 }
+
+/* Главная не прокручивается: не держим пустую полосу под скроллбар (видна на ноутах с мышью или «Всегда показывать полосы прокрутки») */
+html:has(> body.workspace-page) { scrollbar-gutter: auto; }
