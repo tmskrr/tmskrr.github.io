@@ -335,8 +335,9 @@ button, input, textarea, select { font: inherit; }
   .container { width: min(calc(100% - 36px), var(--content)); }
   .site-header { position: sticky; overflow: visible; }
   .site-nav { position: relative; min-height: 50px; flex-wrap: nowrap; padding-right: 0; }
+  .site-nav { padding-right: 128px; }
   .site-brand { font-size: 12px; }
-  .system-status { display: none; }
+  .system-status { display: block; width: auto; font-size: 12px; }
   .menu-button { display: inline-flex; min-width: 64px; min-height: 34px; align-items: center; justify-content: center; padding: 5px 11px; border: 1px solid rgba(48,57,61,.16); border-radius: 10px; background: rgba(255,255,255,.58); color: #303638; font-size: 12px; font-weight: 650; }
   .site-nav__links { position: fixed; z-index: 70; top: 58px; right: 16px; display: flex; width: min(290px, calc(100vw - 32px)); flex-direction: column; align-items: stretch; gap: 3px; padding: 8px; border: 1px solid rgba(48,57,61,.18); border-radius: 16px; background: rgba(247,248,248,.94); box-shadow: 0 20px 50px rgba(29,38,42,.22), inset 0 1px rgba(255,255,255,.95); opacity: 0; pointer-events: none; transform: translateY(-8px) scale(.98); transform-origin: right top; backdrop-filter: blur(22px) saturate(1.16); transition: opacity 150ms ease, transform 180ms cubic-bezier(.2,.7,.2,1); }
   .site-nav__links.is-open { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
@@ -436,4 +437,10 @@ button, input, textarea, select { font: inherit; }
   .typewriter__text { width: 100%; }
   .typewriter__cursor { display: none; }
   .motion-ready [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Телефон: в шапке только время, как в строке состояния */
+@media (max-width: 560px) {
+  .site-nav { padding-right: 52px; }
+  .system-status__date { display: none; }
 }
