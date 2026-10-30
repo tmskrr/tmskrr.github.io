@@ -46,10 +46,13 @@
         const weekdays = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
         const months = ['янв.', 'февр.', 'мар.', 'апр.', 'мая', 'июн.', 'июл.', 'авг.', 'сент.', 'окт.', 'нояб.', 'дек.'];
         const time = new Intl.DateTimeFormat('ru', { hour: '2-digit', minute: '2-digit' }).format(now);
-        status.textContent = `${weekdays[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]} ${time}`;
+        // дата отдельным куском: на телефоне остаётся только время, как в строке состояния
+        status.innerHTML = `<span class="system-status__date">${weekdays[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]} </span>${time}`;
       };
       updateClock();
-      window.setInterval(updateClock, 60000);
+      // обновляем ровно в начале минуты, чтобы часы не отставали от системных
+      const tick = () => { updateClock(); window.setTimeout(tick, 60000 - (Date.now() % 60000) + 50); };
+      window.setTimeout(tick, 60000 - (Date.now() % 60000) + 50);
       siteNav.append(status);
     }
 
