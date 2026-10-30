@@ -89,9 +89,8 @@
   const sayText = say.querySelector('[data-say-text]');
   const sayLink = say.querySelector('.cow-say__link');
 
-  trigger.setAttribute('aria-label', 'Корова: познакомиться с Марго');
-  trigger.setAttribute('aria-controls', say.id);
-  trigger.setAttribute('aria-expanded', 'false');
+  trigger.setAttribute('aria-label', 'Корова: потыкайте, она отвечает');
+  trigger.removeAttribute('aria-expanded');
 
   // ---------- Геометрия: та же логика object-fit: cover, что у кнопки коровы ----------
   let geometry = null;
@@ -315,7 +314,6 @@
     window.clearTimeout(typeTimer);
     window.clearTimeout(hideTimer);
     say.classList.remove('is-open', 'is-typing', 'is-done');
-    trigger.setAttribute('aria-expanded', 'false');
     stopTyping(0);
   };
   // облачко само уходит через 10 секунд, но не пока на нём курсор или фокус
@@ -363,7 +361,8 @@
   // После игры цепочка реакций начинается заново, знакомство больше не повторяется.
   // Тык по корове во время игры закрывает игру
   const CHAIN = ['moo', 'dance', 'heart', 'tired', 'play'];
-  let introduced = false;
+  // знакомство «Привет, я Марго» убрано: корова сразу играет, а «Обо мне» и так рядом в папке
+  let introduced = true;
   let step = 0;
 
   // рамка фокуса нужна только при управлении с клавиатуры, после тыка мышью или пальцем её не показываем
