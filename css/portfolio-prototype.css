@@ -439,8 +439,8 @@ button, input, textarea, select { font: inherit; }
   .motion-ready [data-reveal] { opacity: 1; transform: none; }
 }
 
-/* Телефон: в шапке только время, как в строке состояния */
+/* Телефон: дата и время помещаются, шрифт чуть мельче */
 @media (max-width: 560px) {
-  .site-nav { padding-right: 52px; }
-  .system-status__date { display: none; }
+  .site-nav { padding-right: 116px; }
+  .system-status { font-size: 11px; }
 }
