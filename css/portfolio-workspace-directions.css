@@ -281,9 +281,8 @@
 /* Главная не прокручивается: не держим пустую полосу под скроллбар (видна на ноутах с мышью или «Всегда показывать полосы прокрутки») */
 html:has(> body.workspace-page) { scrollbar-gutter: auto; }
 
-/* Папки на траве: белые подписи сливались с пёстрым фоном. Даём им тёмную полупрозрачную плашку,
-   как у подписей на рабочем столе. На телефоне папки на небе с тёмными подписями, там плашка не нужна */
+/* Папки на траве: белые подписи сливались с пёстрым фоном. Без плашек: чуть жирнее и плотная тень
+   под буквами, как у подписей на рабочем столе Mac. На телефоне папки на небе с тёмными подписями, их не трогаем */
 @media (min-width: 701px) {
-  .desktop-folder strong { padding: 3px 9px 4px; border-radius: 7px; background: rgba(20, 38, 24, .26); text-shadow: 0 1px 3px rgba(10, 24, 14, .55); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
-  .desktop-folder:hover strong, .desktop-folder:focus-visible strong { background: rgba(20, 38, 24, .4); }
+  .desktop-folder:first-child strong, .desktop-folder strong { font-weight: 600; text-shadow: 0 1px 2px rgba(8, 20, 10, .75), 0 0 8px rgba(8, 20, 10, .45); }
 }
