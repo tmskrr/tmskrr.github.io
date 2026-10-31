@@ -278,16 +278,19 @@
         if (focus) tab.focus();
         const list = tab.parentElement;
         if (list.scrollWidth > list.clientWidth) list.scrollTo({ left: Math.max(0, tab.offsetLeft - list.offsetLeft - 24), behavior: reduce.matches ? 'auto' : 'smooth' });
-        // если страница прокручена и прилипшие вкладки накрыли заголовок примера, возвращаем его под вкладки
+        // если читали пример глубоко и прилипшие вкладки накрыли начало нового примера, возвращаем его под вкладки.
+        // Когда начало примера и так видно, ничего не прокручиваем: иначе вкладки дёргаются при каждом тыке
         const shown = box.querySelector('#' + tab.getAttribute('aria-controls'));
         if (shown) {
-          const under = list.getBoundingClientRect().bottom;
-          const top = shown.getBoundingClientRect().top;
-          if (top < under + 8) {
-            let sc = box.parentElement;
-            while (sc && sc !== document.body && !/(auto|scroll)/.test(getComputedStyle(sc).overflowY)) sc = sc.parentElement;
-            (sc && sc !== document.body ? sc : window).scrollBy({ top: top - under - 16 });
-          }
+          let sc = box.parentElement;
+          while (sc && sc !== document.body && !/(auto|scroll)/.test(getComputedStyle(sc).overflowY)) sc = sc.parentElement;
+          const target = sc && sc !== document.body ? sc : window;
+          const fit = () => {
+            const gap = shown.getBoundingClientRect().top - list.getBoundingClientRect().bottom;
+            if (gap < -2) target.scrollBy({ top: gap, behavior: 'instant' });
+          };
+          // второй проход в следующем кадре: браузер может сам подвинуть прокрутку, когда высота примера меняется
+          fit(); requestAnimationFrame(fit);
         }
       };
       // список вкладок прилипает под меню разделов
