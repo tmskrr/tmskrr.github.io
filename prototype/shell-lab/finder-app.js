@@ -19,7 +19,7 @@
   // ---------- Разделы ----------
   const SECTIONS = { projects: 'Проекты', about: 'Обо мне', books: 'Книги', design: 'Дизайн' };
   const ROUTES = {
-    projects: { src: '/prototype/projects-lab/v3/?v=2', pick: '.open-folder__content', title: 'Проекты', section: 'projects', note: 'Цифровые продукты: от\u00a0пользовательской помощи до\u00a0контент-систем и\u00a0запуска новых направлений', status: (root) => plural(root.querySelectorAll('.project-file').length, ['документ', 'документа', 'документов']) },
+    projects: { src: '/prototype/projects-lab/v3/?v=3', pick: '.open-folder__content', title: 'Проекты', section: 'projects', note: 'Цифровые продукты: от\u00a0пользовательской помощи до\u00a0контент-систем и\u00a0запуска новых направлений', status: (root) => plural(root.querySelectorAll('.project-file').length, ['документ', 'документа', 'документов']) },
     'projects/widget': { src: '/prototype/projects-lab/widget-final/', pick: 'main', title: 'Widget', section: 'projects' },
     'projects/alphacon': { src: '/prototype/projects-lab/alphacon-a/', pick: 'main', title: 'Alphacon', section: 'projects' },
     'projects/uzum-business': { src: '/prototype/projects-lab/uzum-d/', pick: 'main', title: 'Uzum Business', section: 'projects' },
