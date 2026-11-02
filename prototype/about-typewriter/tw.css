@@ -194,3 +194,8 @@
   .tw-card, .tw__roll.is-feeding, .tw__roll.is-up, .tw__roll p { transition: none; }
   .tw__roll p.is-typing::after { animation: none; }
 }
+
+/* строка про дизайн-портфолио под ролью */
+.tw__who .tw__also { margin-top: 10px; color: var(--muted); font-size: 14px; }
+.tw__also a { color: #1463c4; text-decoration: underline; text-decoration-color: rgba(20,99,196,.35); text-underline-offset: 3px; }
+.tw__also a:hover { text-decoration-color: currentColor; }
